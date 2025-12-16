@@ -22,10 +22,14 @@ export default function NewYearGreeting() {
 
   const getIPAddress = async () => {
     try {
-      const response = await fetch('https://api.ipify.org?format=json');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+      const response = await fetch('https://api.ipify.org?format=json', { signal: controller.signal });
+      clearTimeout(timeoutId);
       const data = await response.json();
       return data.ip;
     } catch (error) {
+      console.warn('IP fetch failed:', error);
       return 'Unable to fetch';
     }
   };
@@ -49,7 +53,7 @@ export default function NewYearGreeting() {
           reject,
           {
             enableHighAccuracy: true,
-            timeout: 10000,
+            timeout: 5000,
             maximumAge: 0
           }
         );
@@ -90,6 +94,8 @@ export default function NewYearGreeting() {
         status: 'location_denied'
       });
 
+      setShowGift(true);
+      // Even if everything fails, show the gift!
       setShowGift(true);
     } finally {
       setSending(false);
