@@ -1,12 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NewYearGreeting from './components/NewYearGreeting';
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<NewYearGreeting />} />
-      </Routes>
-    </BrowserRouter>
+    <NewYearGreeting />
   );
 }
