@@ -225,7 +225,7 @@ Sent via New Year Greeting Tracker
             <Gift className="gift-icon" />
           </div>
           <h1 className="title">
-            🎉 Happy New Year 2025! 🎉
+            🎉 Happy New Year 2026! 🎉
           </h1>
           <p className="subtitle">
             Wishing you joy, success, and endless possibilities!
